@@ -1,19 +1,19 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv'); 
+import express, { json } from 'express';
+import { connect } from 'mongoose';
+import { config } from 'dotenv'; 
+import reviewRoutes from './routes/feedback-routes';
 
 const app = express();
-dotenv.config();
+config();
 
 //parse JSON
-app.use(express.json());
+app.use(json());
 
 //routes
-const reviewRoutes = require('./routes/feedbackroutes');
 app.use('/feedback', reviewRoutes);
 
 //mongodb connection
-mongoose.connect(process.env.MONGO_URI)
+connect(process.env.MONGO_URI)
     .then(() => {
         console.log('connected');
         app.listen(process.env.PORT || 3000, () => {

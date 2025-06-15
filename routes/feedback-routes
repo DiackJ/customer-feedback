@@ -1,0 +1,8 @@
+import { Router } from 'express';
+const router = Router();
+import { submitReview, viewReviews } from './controller/feedback-controllers';
+
+router.post('/feedback/submit-review', submitReview);
+router.get('/feedback/view-reviews', viewReviews); 
+
+export default router; 
