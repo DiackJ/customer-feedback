@@ -1,8 +1,18 @@
 import { Router } from 'express';
 const router = Router();
-import { submitReview, viewReviews } from './controller/feedback-controllers';
+import {submitReview, viewReviews} from './service/review-service';
 
-router.post('/feedback/submit-review', submitReview);
-router.get('/feedback/view-reviews', viewReviews); 
+
+//controller for users to submit a product review
+router.post('/feedback/submit-review', async (req, res) => {
+    await submitReview(req.body);
+    res.status(201).json({message: 'review submitted'});   
+})
+
+//controller for users to view customer reviews
+router.get('/feedback/view-reviews', async (req, res) => {
+    const reviews = await viewReviews(req.query);
+    res.status(200).json(reviews); 
+}) 
 
 export default router; 
