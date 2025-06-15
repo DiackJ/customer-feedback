@@ -1,6 +1,9 @@
 import mongoose from 'mongoose'; 
 
 const review = new mongoose.Schema({
+    id: {
+        type: mongoose.Types.ObjectId
+    },
     name: {
         type: String,
         required: false
@@ -26,7 +29,7 @@ const review = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: new Date()
     },
 }); 
 

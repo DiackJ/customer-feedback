@@ -1,6 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-import {submitReview, viewReviews} from './service/review-service';
+import {submitReview, viewReviews} from '../service/review-service';
 
 
 //controller for users to submit a product review
